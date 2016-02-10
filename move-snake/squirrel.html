@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<style>
+#container {
+  width: 800px;
+  height: 400px;
+  position: relative;
+  background: white;
+}
+#canvas {
+  top: 400px;
+  left: 0px;
+  width:300px; /*width of your image*/
+  height:225px; /*height of your image*/
+  /*background-image:url('img/snake/up-right.jpg');*/
+  margin:0; /* If you want no margin */
+  padding:0; /*if your want to padding */
+  position: absolute;
+  background-repeat:no-repeat;
+}
+
+</style>
+<body>
+
+<img src="img/snake/up-right.jpg" style="display:none;" alt="" />
+<img src="img/snake/down-right.jpg" style="display:none;" alt="" />
+<img src="img/snake/up.jpg" style="display:none;" alt="" />
+<img src="img/snake/down.jpg" style="display:none;" alt="" />
+
+
+<div id ="container">
+<div id ="canvas"></div>
+</div>
+
+<script type = "text/javascript" src = "squirrel.js"></script>
+
+</body>
+</html>
