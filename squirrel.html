@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<style>
+#container {
+  width: 800px;
+  height: 400px;
+  position: relative;
+  background: white;
+}
+#canvas {
+  top: 400px;
+  left: 0px;
+  width:300px; /*width of your image*/
+  height:225px; /*height of your image*/
+  /*background-image:url('img/snake/up-right.jpg');*/
+  margin:0; /* If you want no margin */
+  padding:0; /*if your want to padding */
+  position: absolute;
+  background-repeat:no-repeat;
+}
+
+</style>
+<body>
+
+<img src="img/snake/up-right.jpg" style="display:none;" alt="" />
+<img src="img/snake/down-right.jpg" style="display:none;" alt="" />
+
+<img src="img/squirrel/squirrel1.jpg" style="display:none;" alt="" />
+<img src="img/squirrel/squirrel2.jpg" style="display:none;" alt="" />
+<img src="img/squirrel/squirrel3.jpg" style="display:none;" alt="" />
+<img src="img/squirrel/squirrel4.jpg" style="display:none;" alt="" />
+<img src="img/squirrel/squirrel5.jpg" style="display:none;" alt="" />
+<img src="img/squirrel/squirrel6.jpg" style="display:none;" alt="" />
+
+<p>
+  <!--
+  <button onclick="myMove()">Fox</button>
+  <button onclick="myMove()">Hawk</button>
+  <button onclick="myMove()">Racoon</button> -->
+  <button onclick="snake()">Snake</button>
+  <button onclick="squirrel()">Squirrel</button>
+</p> 
+
+<div id ="container">
+<div id ="canvas"></div>
+</div>
+
+<script>
+var id;
+
+function snake() {
+  var elem = document.getElementById("canvas");   
+  elem.style.backgroundImage = "url('img/snake/up-right.jpg')"
+
+  var pos = 0;
+  if(id != null){
+    clearInterval(id);
+    elem.style.left = 0;
+  }
+  id = setInterval(frame, 10);
+  function frame() {
+    if (pos == 700) {
+      clearInterval(id);
+      elem.style.left = 0;
+    } else {
+      pos++; 
+
+      if(pos%24==0){
+        elem.style.backgroundImage = "url('img/snake/up-right.jpg')";
+      }
+      else if((pos%12==0) && !(pos%24==0)){
+        elem.style.backgroundImage = "url('img/snake/down-right.jpg')";
+      }
+      //elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px'; 
+    }    
+  }
+}
+
+function squirrel() {
+  var elem = document.getElementById("canvas");   
+  elem.style.backgroundImage = "url('img/squirrel/squirrel4.jpg')";
+
+  var pos = 0;
+  if(id != null){
+    clearInterval(id);
+    elem.style.left = 0;
+  }
+  id = setInterval(frame, 10);
+  var count = 0;
+  function frame() {
+    if (pos == 700) {
+      clearInterval(id);
+      elem.style.left = 0;
+    } else {
+      pos++; 
+
+      if(pos%12 == 0){
+        switch(count){
+          //jump
+          case 0: 
+          count++; 
+          elem.style.backgroundImage = "url('img/squirrel/squirrel4.jpg')";
+          break;
+
+          case 1: 
+          count++; 
+          elem.style.backgroundImage = "url('img/squirrel/squirrel5.jpg')";
+          break;
+
+          case 2: 
+          count++; 
+          elem.style.backgroundImage = "url('img/squirrel/squirrel6.jpg')";
+          break;
+
+          case 3: 
+          count++; 
+          elem.style.backgroundImage = "url('img/squirrel/squirrel5.jpg')";
+          break;
+
+          case 4: 
+          count++; 
+          elem.style.backgroundImage = "url('img/squirrel/squirrel4.jpg')";
+          break;
+
+          case 5: 
+          count=0;
+          elem.style.backgroundImage = "url('img/squirrel/squirrel4.jpg')";
+          break;
+
+          /*
+          //walk
+          case 6: 
+          count++; 
+          elem.style.backgroundImage = "url('img/squirrel/squirrel1.jpg')";
+          break;
+
+          case 7: 
+          count++; 
+          elem.style.backgroundImage = "url('img/squirrel/squirrel2.jpg')";
+          break;
+
+          case 8: 
+          count++; 
+          elem.style.backgroundImage = "url('img/squirrel/squirrel3.jpg')";
+          break;
+
+          case 9: 
+          count=0; 
+          elem.style.backgroundImage = "url('img/squirrel/squirrel4.jpg')";
+          break;
+          */
+        }
+      } 
+      
+      //elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px'; 
+    }    
+  }
+}
+</script>
+
+</body>
+</html>
